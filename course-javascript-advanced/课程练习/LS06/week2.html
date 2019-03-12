@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //ch03
+
+
+    var num1=20.399;
+    num1.toFixed(2);//toFixed(n),保留n位小数
+    //超出指定位数四舍五入，返回的是字符串
+
+    var num2=20;
+    var numberobject=new Number(num2);
+    console.log(numberobject._proto_==Number.prototype);//对象的_proto_等于构造函数的prototype方法
+    //就等于构造函数的方法都可以被Number类型的变量直接调用。
+    numberobject.toFixed();
+
+    var num3=12345.678;
+    num3.toPrecision(1);//1e+4 一乘十的四次方
+    //toPrecision(数字位的个数)，四舍五入
+    //数字位个数小于整数位个数时，表示成指数形式
+    //大于或等于整数位个数时，直接四舍五入截取
+
+    String.fromCharCode(97,98,99); 
+    //将特定的unicode码转换成字符
+
+    //String.prototype.charAt(pos); 
+    //将指定索引位置的字符转换位，unicode码输出
+
+    var str="abcdefgi";
+    str.charCodeAt(0);
+    str.slice(0,-1);
+    //slice(截取的起始位置，截取的终止位置)
+    //如果截取的结束位置小于0，实际结束位置为
+    //str.length+截取结束参数
+    //一个参数表示截取的起始位置
+
+    //substr(截取的起始位置，截取的长度)
+    //截取的长度可以缺省，表示从起始位置到字符串结束
+    str.substr(0,3);
+
+    str.substring(0,3);
+    //如果起始值比结束值大，自动换位置
+    //substring(截取的起始位置，截取的结束位置)
+    //如果超出0-str.length范围，会被截断
+    //第二个参数可以比第一个参数小，会自动互换。
+
+    //str.split(分隔符号,限定生成的数组长度)
+    //str.split();和str.split("");不一样。
+    str.split("*",2);
+
+    var str1="    ab    c       ";
+    str1.trim();
+
+    var str2="abc";
+    str2.concat("def","ghi");
+
+    //indexOf(查找的特定字符，查找的起始位置)；
+    //返回值是字符串出现的索引位置
+    //找不到，返回-1
+
+    //lastindexOf
+    Boolean(null);//false
+
+    //ch04
+    //字面值：变量具体的值
+    //ES5 ECMAScript是一个语言标准，JS是完全基于ECMAScript实现的脚本语言
+    //ES5是ECMAScript的简写
+    //当前主流版本是ES5 ES6
+    var username;
+    if(true){
+        var username="zhangsan";
+    }
+    console.log(username);
+    //ES5标准下，没有块级作用域
+    //undefined是因为只声明了变量，没有赋值
+
+    for(var i=0;i<3;i++){
+    }
+    console.log(i);//3
+    
+    //对所有代码都应用严格模式，全局的
+    //"use strict"
+
+    function fun1(){
+        'use strict'
+        username1="zhangsan"
+    }//对函数范围内代码启用严格模式
+    fun1();
+    console.log(username1);
+    //非严格模式下，不使用var来显示声明变量，则该变量自动升级为全局变量。
+
+    function fn2(){
+        console.log(this);
+    }
+    fn2();
+    function fn3(){
+        'use strict'
+        console.log(this);
+    }
+    fn3();//严格模式下，this指向undefined
+
+    function judge(){
+        var result=(this==undefined?true:false);
+        return result;
+    }
+    if(judge()){
+        console.log("严格模式");
+    }
+    else{
+        console.log("非严格模式下");
+    }
+    'use strict'
+    var str="abcdef";
+    str.length=1;
+    console.log(str.length);//6
+    //装箱，把str包装成一个临时对象，在用完之后直接释放掉了
+    //严格模式下会报错
+
+    var index=1;
+    switch(index){
+        case 1:
+        console.log("星期一");
+        break;
+        case 2:
+        console.log("星期二");
+        break;
+        default:
+        console.log("没有该选项");
+    }
+    //switch的值和case的值进行的是全等类型的比较，值和类型需要均相等
+    var index=1;
+    switch(index){
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+           console.log("工作日");
+           break;
+        case 6:
+        case 7:
+          console.log("休息日");
+          break;
+            }
+</script>
+</html>
