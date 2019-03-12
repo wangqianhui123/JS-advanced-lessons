@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+    var obj={"username":"zhangsan","age":20};
+    obj.__proto__.sex="male";
+    console.log(obj);
+    //for in遍历得是对象的所有课枚举属性
+    for(var i in obj){
+        console.log(i);
+        console.log(obj[i]);
+    }
+    //不建议使用forin遍历数组
+    var arr1=[1,2,3];
+    console.log(Object(arr1));
+    for(var j in arr1){
+        console.log(j);
+    }
+
+    var a=45;
+    //发反写，字面量在前，变量在后
+    if(45==a){
+        console.log("判断相等")
+    }
+
+    var x=1;
+    console.log(x++);//1
+    console.log(++x);//2
+    //++x,先运算，再输出
+    //x++，先输出，再运算
+    //++，--自动完成数据类型的隐式转换，转换为数字类型
+    //+=不会进行类型的转化
+
+    //&& 两边不是布尔类型的时候，如果左侧为真，返回右操作数，如果左侧为假，返回左操作数
+    //|| 左为真，取左；左为假，取右
+    var score=98;
+    console.log((score>90&&"优")||(score>75&&"良")||(score>60&&"及格"));
+    
+    var a;
+    var b;
+    var c;
+
+    function sum(x,y,z){
+        x=x||1;
+        y=y||2;
+        z=z||3;
+        return x+y+z;
+    }
+    console.log(sum(false,false,false));
+
+    //ES6实现设置函数参数的默认值
+    function sum(x=1,y=2,z=3){
+        return x+y+z;
+    }
+</script>
+</html>
