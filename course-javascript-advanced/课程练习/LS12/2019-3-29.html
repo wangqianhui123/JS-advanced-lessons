@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="spanList">导航内容</div>
+    
+</body>
+<script>
+    //函数的作用域，在定义的时候就是确定的
+    //函数内部的变量，有些时候需要等函数执行来确定
+    function fn1(){
+        var arr1=[];
+        for(var i=0;i<10;i++){
+            arr[i]=function(){
+                return i;
+            }
+        }
+        return arr1;
+    }
+    var result =fn1();
+    result[0]();//10
+
+    var i=10;
+    arr[0]=function(){
+        return i;
+    }
+    arr[1]=function(){
+        return i;
+    }
+
+    function fn1(){
+        var arr1=[];
+        for(var i=0;i<10;i++){
+            (function(j){
+            arr[j]=function(){
+                return j;
+            }
+        })(i)
+        }
+        return arr1;
+    }
+    var result =fn1();
+    result[0]();//1
+
+
+    (function(w,d){
+        var spanLis=d.getElementsByClassName("spanList")[0];
+        for(var i=0;i<spanList.length;i++){
+            spanList[i]
+        }
+    })(window,document)
+
+
+    for(var i=0;i<3;i++){
+        setTimeout(function(){
+            console.log(new Date(),i);
+        },1000*i)
+    }
+
+    setTimeout(function(){
+            console.log(new Date(),0);
+        },1000*0);
+
+        setTimeout(function(){
+            console.log(new Date(),1);
+        },1000*1)
+
+        setTimeout(function(){
+            console.log(new Date(),2);
+        },1000*2)
+
+    for(var i=0;i<3;i++){
+      (function(j){
+        setTimeout(function(){
+            console.log(new Date(),j);
+        },1000*j)})(i);
+    }
+
+    //闭包：通过在函数(fn1)内部定义函数(fn2)，来访问在父函数中定义的局部变量(x)
+    function f1(){
+	var x = 1;
+	function f2(){
+		return x++;
+	}
+	return f2();
+    }
+    var result=fn1();
+    result();
+//形成闭包的条件：
+//外层定义的函数（addNumber）、内层函数
+//内层函数与外层函数作用域相关联的变量
+
+//闭包的作用：
+//1、可以访问函数内部（addNumber）定义的局部变量（start）
+//2、可以让相关联的变量（start），不释放
+    function addNumber(start){
+        return function(step){
+            start +=step;
+            return start;
+        }
+    }
+    var result=addNumber(10);
+    console.log(result(1));
+    console.log(result(2));
+    console.log(result(3));
+</script>
+</html>
