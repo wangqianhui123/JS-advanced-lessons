@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    if(true){
+        var a=1;
+    }
+    console.log(a);
+
+    if(false){
+        var b=2;
+    }
+    console.log(b);
+
+    console.log(a);
+    var a=1;
+
+    function fn1(){
+        //函数内部的预解析，在函数作用域范围内，对变量进行提升
+        console.log(b);
+        var b=2;
+    }
+    console.log(b);
+
+    function fn2(){
+        fn3();
+        function fn3(){
+            console.log("hello world");
+        }
+    }//fn3()在作用域内有效，外面调不到
+    fn2();
+   // fn3();//出错
+
+    var a=1;
+    var b=2;
+    function fn4(){
+        var b=3;
+        var d=4;
+        console.log(b);
+        function fn5(){
+            b=5;
+            var e=6;
+        }
+        fn5();
+    }
+    fn4();
+    console.log(b);
+
+    //作用域的静态性，只要完成函数的定义，那边亮的作用于就是确定的，与函数在哪调用无关
+    var usernae="jack";
+    function foo(){
+        console.log(usernae);
+    }
+    function bar(){
+        var usernae="bill";
+        foo();
+    }
+    bar();//jack
+ 
+    console.log(x);//undefined
+    if(true){
+        var x=1;
+    }
+
+    //变量污染
+    var userId=2;
+    document.onclick=function(){
+        console.log(userId);
+    };
+    //很长一段代码
+
+    (function(){
+        if(true){
+            var userId=20;
+        }
+    })();
+    //避免全局变量污染
+    if(true){
+        var userId=20;
+    }
+
+    for(var i=0;i<3;i++){
+        setInterval(function(){
+            console.log(new Date(),i);},i*1000
+        )
+    }
+
+    //代码执行上下文
+    //指的是代码执行的时候，相关的上下文环境
+    //函数的调用栈、this的指向、作用域及作用域中的变量
+    var aa=1;
+    var bb=2;
+    function fnn1(){
+        var cc=3;
+        var dd=4;
+        function fnn2(){
+            var ee=5;
+            var ff=6;
+            function fnn3(){
+                var gg=7;
+                var hh=8;
+            }
+            fnn3();
+        }
+        fnn2();
+    }
+    fnn1();
+
+</script>
+</html>
